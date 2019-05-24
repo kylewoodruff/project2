@@ -1,3 +1,12 @@
 .list-group-item {
   line-height: 2.5;
 }
+.navbar {
+  background: transparent;
+}
+.jumbotron {
+  background-image: url("../images/tv.jpg");
+  background-size: cover;
+
+}
+
