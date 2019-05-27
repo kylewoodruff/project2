@@ -20,3 +20,16 @@ p {
 .navbar img {
   height:35px;
 }
+#loginlink  {
+  color: teal;
+  font-weight: bold;
+}
+#signuplink {
+  color: teal;
+  font-weight: bold;
+}
+
+#jumbotroncarousel {
+  background-color: teal;
+
+}
