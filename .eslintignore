@@ -1,2 +1,3 @@
 models/index.js
+models/subscription.js
 node_modules
