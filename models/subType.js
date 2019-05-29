@@ -1,12 +1,12 @@
-module.exports = function(sequelize, DataTypes) {
-    var subType = sequelize.define("subTypes", {
-      type: {
-      DataTypes.STRING,
+module.exports = function (sequelize, DataTypes) {
+  var subType = sequelize.define("subType", {
+    type: {
+      type: DataTypes.STRING,
       allowNull: false
     }
-    });
-    subType.associate = function(models) {
-        models.subType.belongsTo(models.subs);
-      };
-    return subType;
+  });
+  subType.associate = function (models) {
+    subType.belongsTo(models.subscription);
   };
+  return subType;
+};
