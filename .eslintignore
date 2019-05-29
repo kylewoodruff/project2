@@ -1,3 +1,4 @@
 models/index.js
 models/subscription.js
+models/subType.js
 node_modules
