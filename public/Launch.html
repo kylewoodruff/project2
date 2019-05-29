@@ -40,10 +40,9 @@
 
     </nav>
 
-    <div class="jumbotron" id="jumbotron1"></div>
+    <div class="jumbotron" id="jumbotron1">
 
-
-
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-4">
@@ -73,47 +72,135 @@
             </div>
         </div>
     </div>
-
-
-
-
-    <!-- carousel -->
-
-    <div class="jumbotron jumbotron-fluid" id="jumbotroncarousel">
-        <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel" data-wrap="true">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="images/Netflix-Logo.jpg" class="d-block w-100" alt="Netflix logo">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/maxresdefault.jpg" class="d-block w-100" alt="HBO GO LOGO">
-                </div>
-                <div class="carousel-item">
-                    <img src="images/hulu.jpg" class="d-block w-100" alt="Hulu Logo">
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <p><b>Movie subscriptions:</b></p>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/Netflix-Logo.jpg" class="card-img-top d-block w-100"
+                                    alt="Netflix-Logo">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/hulu.jpg" class="card-img-top d-block w-100" alt="hulu">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/maxresdefault.jpg" class="card-img-top d-block w-100"
+                                    alt="HBO Go logo">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
 
-        </div>
-    </div>
+            <div class="col-6">
+                <p><b>Music Subscriptions:</b></p>
+                <div id="carouselMain" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/Netflix-Logo.jpg" class="card-img-top d-block w-100"
+                                    alt="Netflix-Logo">
+                            </div>
+                        </div>
 
-
-
-    <!-- login modal -->
-    <div class="modal" tabindex="-1" role="dialog" id="loginmodal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Login</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                        <div class="carousel-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/hulu.jpg" class="card-img-top d-block w-100" alt="hulu">
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="./images/maxresdefault.jpg" class="card-img-top d-block w-100"
+                                    alt="HBO Go logo">
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <!-- form for login -->
+            </div>
+
+        </div>
+        <hr>
+        <div class="footer-copyright">
+                <div class="container-fluid">
+                    © 2019 Copyright: Death Eaters
+
+                </div>
+            </div>
+
+
+
+
+
+
+        <!-- login modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="loginmodal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- form for login -->
+                        <div class="row">
+                            <div class="col-4">
+                                <button type="button" class="btn btn-primary"><i
+                                        class="fab fa-facebook-square"></i></button>
+                            </div>
+                            <div class="col-4">
+                                <button type="button" class="btn btn-danger"><i class="fab fa-google"></i></button>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <form>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
+                                    placeholder="Enter email">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Password</label>
+                                <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="loginButton">Save
+                            changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sign up Modal -->
+        <div class="modal" tabindex="-1" role="dialog" id="Signupmodal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Sign-up</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="row">
                         <div class="col-4">
-                            <button type="button" class="btn btn-primary"><i class="fab fa-facebook-square"></i></button>
+                            <button type="button" class="btn btn-primary"><i
+                                    class="fab fa-facebook-square"></i></button>
                         </div>
                         <div class="col-4">
                             <button type="button" class="btn btn-danger"><i class="fab fa-google"></i></button>
@@ -134,75 +221,32 @@
                         </div>
                     </form>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="loginButton">Save changes</button>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="signupSave">Save
+                            changes</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Sign up Modal -->
-    <div class="modal" tabindex="-1" role="dialog" id="Signupmodal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Sign-up</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <button type="button" class="btn btn-primary"><i class="fab fa-facebook-square"></i></button>
-                    </div>
-                    <div class="col-4">
-                        <button type="button" class="btn btn-danger"><i class="fab fa-google"></i></button>
-                    </div>
-                </div>
-                <hr>
-
-                <form>
-                    <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="loginPassword" placeholder="Password">
-                    </div>
-                </form>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="signupSave">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-
-    </div>
 
 
 
 
 
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
 </body>
 
 </html>
