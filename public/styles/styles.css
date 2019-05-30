@@ -15,22 +15,26 @@ hr {
   height:25px;
 }
 p {
-  color: teal;
+  color: black;
 }
 .navbar img {
   height:35px;
 }
 #loginlink  {
-  color: teal;
+  color: black;
   font-weight: bold;
 }
 #signuplink {
-  color: teal;
+  color: black;
   font-weight: bold;
 }
 #mainhead{
   background-color: teal;
 }
 .footer-copyright {
+  background-color: teal;
+}
+#jum{
+  height:500px;
   background-color: teal;
 }
