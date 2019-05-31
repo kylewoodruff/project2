@@ -1,11 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-  var subs = sequelize.define("subs", {
+  var subs = sequelize.define("subscription", {
     subName: {
       type: DataTypes.TEXT,
       allowNull: false
     },
     amount: {
-      type: DataTypes.DECIMAL(10,2),
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     dueDate: {
@@ -18,7 +18,12 @@ module.exports = function (sequelize, DataTypes) {
     },
   });
   subs.associate = function (models) {
-    subs.hasOne(models.subType);
+    console.log(models);
+    subs.hasOne(models.category, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return subs;
 };
