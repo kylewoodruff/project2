@@ -1,0 +1,4 @@
+subId,subscriptionName,amount,duedate,category,user_firebaseAuth
+1,netflix,20.00,2019/6/01,"Video Streaming",00
+2,Hulu,20.00,2019/6/2,"Video Streaming",01
+3,Spotify,12.00,2019/6/05,"Music Streaming",02
