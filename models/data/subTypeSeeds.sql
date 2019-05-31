@@ -1,5 +1,5 @@
 -- Initial sub types
-USE subman_db;
+USE subman_db
 INSERT INTO subType ("subType")
 VALUES ("Video Streaming");
 

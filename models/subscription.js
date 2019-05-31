@@ -1,26 +1,34 @@
-module.exports = function(sequelize, DataTypes) {
-  var subs = sequelize.define("subs", {
+module.exports = function (sequelize, DataTypes) {
+  var subs = sequelize.define("subscription", {
     subName: {
-      DataTypes.TEXT,
+      type: DataTypes.TEXT,
       allowNull: false
     },
-    amount:{
-      DataTypes.FLOAT,
+    amount: {
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false
     },
     dueDate: {
-      DataTypes.DATETIME,
+      type: DataTypes.DATE,
       allowNull: false
     },
     userId: {
-      DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false
     },
   });
-  subs.associate = function(models) {
-    models.subs.hasOne(models.subType, {foreignkey:{
-      allowNull: false
-    } });
+  subs.associate = function (models) {
+    console.log(models);
+    subs.hasOne(models.category, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
   return subs;
 };
+
+
+
+
+
