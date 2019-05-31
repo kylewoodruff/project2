@@ -28,6 +28,9 @@ p {
   color: teal;
   font-weight: bold;
 }
+#mainhead{
+  background-color: teal;
+}
 .footer-copyright {
   background-color: teal;
 }
