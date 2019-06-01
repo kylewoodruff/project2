@@ -33,7 +33,7 @@
 		</div>
 		<div class="col-12"></div>
 						  
-			  			   				    {{#each subscription}}
+			  			{{#each subscription}}
 				    	{{#if notification}}
 							{{ subscriptions/subscription-block notification=false}}
 				     	{{/if}}	
@@ -45,17 +45,18 @@
 			<div class="card">
 				<h5 class="card-header">Add a Subscription to your list</h5>
 				<div class="card-body">
-					<form id="new-book">
+					<form id="new-subscription">
 					  <div class="form-group">
-					    <label>Subscription Name</label>
+					    <label>Subscription</label>
 					    <input type="text" class="form-control" id="subscription-name" placeholder="sub here">
 					  </div>
+						<div>
 					     <label>User</label>
 					    <input type="text" class="form-control" id="user" placeholder="user info here">
-					  
+					  </div>
 					
-					    <label>User</label>
-					    <input type="" class="form-control" id="amount" placeholder="user info here">
+					    <label>amount</label>
+					    <input type="number" class="form-control" id="amount" placeholder="$">
 				
 					  <button type="submit" class="btn btn-primary">Submit</button>
 					</form>
