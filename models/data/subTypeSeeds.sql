@@ -1,25 +1,25 @@
 -- Initial sub types
-USE subman_db
-INSERT INTO subType ("subType")
+USE subman_db;
+INSERT INTO category (categoryType)
 VALUES ("Video Streaming");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Food Delivery");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Clothing Delivery");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Music Streaming");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Products");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Audio Books");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Hygine");
 
-INSERT INTO subType ("subType")
+INSERT INTO category (categoryType)
 VALUES ("Other");

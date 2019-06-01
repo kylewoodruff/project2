@@ -60,5 +60,7 @@ typings/
 # next.js build output
 .next
 
+# CSV file 
+.csv
 .DS_Store
 
