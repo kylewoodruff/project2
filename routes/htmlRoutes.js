@@ -8,7 +8,7 @@ module.exports = function (app) {
 
   // Load example page and pass in an example by id
   app.get("/sub", function (req, res) {
-    res.sendFile(path.join(__dirname, "../public/sub.html"));
+    res.sendFile(path.join(__dirname, "../public/subs.html"));
   });
 
   // Render 404 page for any unmatched routes
