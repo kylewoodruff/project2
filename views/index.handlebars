@@ -1,0 +1,158 @@
+<div class="jumbotron">
+	  <h1 class="display-4 text-center">Subscription List</h1>
+	  <p class="lead text-center">Subscription Service Manager </p>
+	  <hr class="my-4 text-center">
+	  <p>Use the functions below to create and update all your subscriptions.</p>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+			  <h5 class="card-header">Active Subscriptions</h5>
+			  <div class="card-body">
+			    <table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">ID #</th>
+				      <th scope="col">Name</th>
+				      <th scope="col">User</th>
+				      <th scope="col"></th>
+				      <th scope="col">Notification</th>
+				      <th scope="col">Delete</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+					{{#each subscription}}
+						{{#unless notification}}
+							{{> subscriptions/subscription-block notification=true}}
+						{{/unless}}
+					{{/each}}
+				  </tbody>
+				</table>
+			  </div>
+			</div>
+		</div>
+		<div class="col-12"></div>
+						  
+			  			   				    {{#each subscription}}
+				    	{{#if notification}}
+							{{ subscriptions/subscription-block notification=false}}
+				     	{{/if}}	
+					{{/each}}
+		
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="card">
+				<h5 class="card-header">Add a Subscription to your list</h5>
+				<div class="card-body">
+					<form id="new-book">
+					  <div class="form-group">
+					    <label>Subscription Name</label>
+					    <input type="text" class="form-control" id="subscription-name" placeholder="sub here">
+					  </div>
+					     <label>User</label>
+					    <input type="text" class="form-control" id="user" placeholder="user info here">
+					  
+					
+					    <label>User</label>
+					    <input type="" class="form-control" id="amount" placeholder="user info here">
+				
+					  <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		//displays an input box to add a user when clicked
+		$(".user").on("click", function() {
+			var currentUser = $(this).data("user");
+			$(this).children().hide();
+			$(this).children("input.user-edit").attr("placeholder", currentUser);
+			$(this).children("input.user-edit").show();
+			$(this).children("input.user-edit").focus();
+		});
+
+		//updates the new User to the database when enter 
+		$(".user").on("keyup", function() {
+			var updatedSubId = $(this).data("subid");
+
+			if (event.which === 13) {
+				var user = $(this).children("input").val().trim();
+
+				var newUser = {
+					user: user
+				};
+
+				$.ajax("update-user/" + updatedSubId, {
+					type: "PUT",
+					data: newUser
+				}).then(function() {
+					console.log("updated User for id" + updatedSubId);
+					location.reload();
+				})
+			}
+		});
+
+		//hides input box and shows user span when input is out of focus
+		$(document).on("blur", ".user", function() {
+			var currentUser = $(this).data("user");
+			$(this).children().hide();
+			$(this).children("span").show();
+		});
+
+		//sets up post ajax request to add subscription to the database on submitting form
+		$("#new-subscription").submit(function(event) {
+			event.preventDefault();
+
+			var subName = $("#subscrition-name").val().trim();
+			var user = $("#user").val().trim();
+			var amount = $("#amount").val().trim();
+
+			var newSubscription = {
+			subName: subName,
+				user: user
+				
+			}
+
+			$.ajax("/add", {
+				type: "POST",
+				data: newSubscription
+			}).then(
+				function() {
+					console.log("new Subscription added");
+					location.reload();
+				}
+			);
+		})
+		//sets up put ajax request to mark notification on/off
+		$(".update-status").on("click", function() {
+			var id = $(this).data("subid");
+			var newStatus = $(this).data("newstatus");
+
+			var newStatusState = {
+				notification: newStatus
+			};
+
+			$.ajax("/update/" + id, {
+				type: "PUT",
+				data: newStatusState
+			}).then(function() {
+				console.log("updated id " + id);
+				location.reload();
+			})
+		})
+
+		$(".delete").on("click", function() {
+			var id = $(this).data("subid");
+
+			$.ajax("/delete/" + id, {
+				type: "DELETE"
+			}).then(function() {
+				console.log("deleted id " + id);
+				location.reload();
+			});
+		});
+
+	</script>
