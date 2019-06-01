@@ -40,4 +40,7 @@ db.sequelize.sync(syncOptions).then(function () {
   });
 });
 
+// Cron job
+
+
 module.exports = app;
