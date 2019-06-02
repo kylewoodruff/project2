@@ -1,17 +1,20 @@
-$(document).ready(function () {
-  /* global moment */
+/* eslint-disable no-unused-vars */
+$(document).ready(function() {
+  // global moment
 
   // blogContainer holds all of our posts
-  $("#saveButton").on("click", function () {
-    var name = $("#nameInput").val().trim();
-    var date = $("#dateInput").val()
-    var subScript = $("#subInput").val().trim();
+  $("#saveButton").on("click", function() {
+    var name = $("#nameInput")
+      .val()
+      .trim();
+    var date = $("#dateInput").val();
+    var subScript = $("#subInput")
+      .val()
+      .trim();
     console.log(name + date + subScript);
-
   });
   var subs;
 
-  
   function createNewRow(subs) {
     var newPostCard = $("<div>");
     newPostCard.addClass("card");
@@ -47,15 +50,5 @@ $(document).ready(function () {
     newPostCard.append(newPostCardBody);
     newPostCard.data("subs", subs);
     return newPostCard;
-  };
-
-
-  
-
-
-
-
-
-
-
+  }
 });
