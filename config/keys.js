@@ -5,5 +5,3 @@ exports.JAWSBD = {
   database: process.env.JAWS_DATABASE,
   port: process.env.JAWS_PORT
 };
-
-
