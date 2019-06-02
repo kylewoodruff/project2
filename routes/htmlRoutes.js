@@ -1,4 +1,5 @@
-var path = require("path");;
+/* eslint-disable no-unused-vars */
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
