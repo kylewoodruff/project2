@@ -1,18 +1,17 @@
 const CronJob = require("../node_modules/cron").CronJob;
 const fs = require("fs");
+const sendEmail = require("../emails/sendgrid");
 
 let emailJob = function() {
   console.log("Before job instantiation");
-  // let timerObj = "' "+sec+" "+min+" "+hr+" "+dayOfMonth+" "+month+" "+dayOfWeek+" '";
-  // let timerString = timerObj.toString();
-  // console.log(timerString);
   const job = new CronJob(
-    "* * * * * *",
+    // cron timer set for every min
+    "* * * * *",
     function() {
       const d = new Date();
       console.log("Midnight:", d);
       console.log("My Cron Job");
-      fs.appendFile("timerlog.txt", job.lastDate(), function(err) {
+      fs.appendFile("timerlog.txt", job.lastDate() + "\n", function(err) {
         if (err) {
           return console.log(err);
         }
@@ -25,7 +24,6 @@ let emailJob = function() {
     "America/Phoenix"
   );
   console.log("After job instantiation");
-  // job.start();
 };
 emailJob();
 
