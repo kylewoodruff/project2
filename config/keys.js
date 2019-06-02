@@ -6,4 +6,9 @@ exports.JAWSBD = {
   port: process.env.JAWS_PORT
 };
 
+SENDGRID = {
+  apiKey: process.env.SENDGRID_API_KEY
+};
+console.log(SENDGRID.apiKey);
 
+module.exports = SENDGRID;
