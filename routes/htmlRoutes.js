@@ -9,7 +9,7 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/sub", function(req, res) {
-    res.render("index");
+    res.render("subs");
   });
 
   // Render 404 page for any unmatched routes
