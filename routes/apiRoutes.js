@@ -1,10 +1,12 @@
+// eslint-disable-next-line no-unused-vars
 var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
   app.get("/api/subs", function(req, res) {
     db.subs.findAll({}).then(function(dbsubs) {
-      res.json(dbsubs);``
+      res.json(dbsubs);
+      ("");
     });
   });
 
@@ -52,23 +54,23 @@ module.exports = function(app) {
   });
 
   // route for insert data
-  app.post('/save', function(req, res){
-     db.subscription
-    .create({
-      subscriptionName: req.body.subscriptionName, 
-      category: req.body.categoryType,
-      amount: req.body.amount,
-      dueDate: req.body.dueDate
-    }).then(function(test){
-      if(test){
-        res.status(200);
-        res.send("Successfully Stored")
-      } else {
-        res.render.alert("Sorry something went wrong")        
-      }
-  })      
-    })
-  
+  app.post("/save", function(req, res) {
+    db.subscription
+      .create({
+        subscriptionName: req.body.subscriptionName,
+        category: req.body.categoryType,
+        amount: req.body.amount,
+        dueDate: req.body.dueDate
+      })
+      .then(function(test) {
+        if (test) {
+          res.status(200);
+          res.send("Successfully Stored");
+        } else {
+          res.render.alert("Sorry something went wrong");
+        }
+      });
+  });
 
   //route for update data
   // app.post('/update',(req, res) => {
@@ -87,6 +89,4 @@ module.exports = function(app) {
   //       res.redirect('/');
   //   });
   // });
-
-
 };
