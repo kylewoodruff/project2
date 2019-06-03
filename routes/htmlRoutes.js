@@ -4,23 +4,23 @@ const passport = require('passport');
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/launch", function(req, res) {
     res.render("launch");
   });
   //Auth Login
-  app.get('/login',(req,res)=>{
-    res.render('login');
+  app.get("/login",(req, res)=>{
+    res.render("login");
 });
 
 //authlogout
-app.get('/logout', (req,res)=>{
+app.get("/logout", (req,res)=>{
     //handle with passport
     res.send('logging out');
 });
 
 
 //auth with google
-app.get('/google',passport.authenticate('google', {
+app.get("/google",passport.authenticate('google', {
   scope:['profile']
 }));
 
