@@ -5,3 +5,10 @@ exports.JAWSBD = {
   database: process.env.JAWS_DATABASE,
   port: process.env.JAWS_PORT
 };
+
+module.exports = {
+  google:{
+      clientID: process.env.CLIENTID,
+      clientSecret: process.env.CLIENTSECRET
+  }
+}
