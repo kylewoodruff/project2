@@ -1,6 +1,7 @@
 require("dotenv").config();
 
-let sendEmail = function (toEmail, name, callback) {
+// eslint-disable-next-line no-unused-vars
+let sendEmail = function(toEmail, name, callback) {
   let sgMail = require("@sendgrid/mail");
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {

@@ -1,5 +1,6 @@
 const CronJob = require("../node_modules/cron").CronJob;
 const fs = require("fs");
+// eslint-disable-next-line no-unused-vars
 const sendEmail = require("../emails/sendgrid");
 
 let emailJob = function() {
