@@ -1,135 +1,163 @@
-	<div class="jumbotron">Welcome Reggie </div>
-	<div class="container">
-    <h2>Subscription List</h2>
-        <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
-    <table class="table table-striped" id="mytable">
-      <thead>
-        <tr>
-          <th>Subscription ID</th>
-          <th>Subscription Name</th>
-					<th>Category</th>
-          <th>Price</th>
-					<th>Due Date</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-         {{#each results}}
-        <tr>
-          <td>{{ id }}</td>
-          <td>{{ subscriptionName }}</td>
-          <td>{{ amount }}</td>
-          <td>
-            <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ id }}" data-subscriptionName="{{ subscriptionName }}" data-amount="{{ amount }}">Edit</a>
-            <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ id }}">Delete</a>
-          </td>
-        </tr>
-        {{/each}}
-      </tbody>
-    </table>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+
+  <a class="navbar-brand js-scroll-trigger"><img src="./images/subMan logoxxxs.png"></a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+    data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+    aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto my-2 my-lg-0">
+      <li class="nav-item">
+        <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="" id="signuplink">Sign-Out</a>
+
+      </li>
+    </ul>
   </div>
- 
-    <!-- Modal Add Product-->
-      <form action="/save" method="post">
-        <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-         <div class="modal-dialog" role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               <div class="form-group">
-                   <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" required>
-               </div>
- 
-               <div class="form-group">
-                   <input type="text" name="amount" class="form-control" placeholder="Price" required>
-               </div>
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               <button type="submit" class="btn btn-primary">Save</button>
-             </div>
-           </div>
-         </div>
+
+</nav>
+
+<div class="jumbotron">
+
+  <h2>Subscription List</h2>
+  <button class="btn btn-success" data-toggle="modal" data-target="#myModalAdd">Add New</button>
+</div>
+<div class="container">
+  <table class="table table-striped" id="mytable">
+    <thead>
+      <tr>
+        <th>Subscription ID</th>
+        <th>Subscription Name</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Due Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each results}}
+      <tr>
+        <td>{{ id }}</td>
+        <td>{{ subscriptionName }}</td>
+        <td>{{ amount }}</td>
+        <td>
+          <a href="javascript:void(0);" class="btn btn-sm btn-info edit" data-id="{{ id }}"
+            data-subscriptionName="{{ subscriptionName }}" data-amount="{{ amount }}">Edit</a>
+          <a href="javascript:void(0);" class="btn btn-sm btn-danger delete" data-id="{{ id }}">Delete</a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</div>
+
+<!-- Modal Add Product-->
+<form action="/save" method="post">
+  <div class="modal fade" id="myModalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New Product</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-     </form>
- 
-     <!-- Modal Update Product-->
-   <form action="/update" method="post">
-       <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit Subscription</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div class="form-group">
-                  <input type="text" name="subscriptionName" class="form-control subscriptionName" placeholder="Subscription Name" required>
-              </div>
- 
-              <div class="form-group">
-                  <input type="text" name="amount" class="form-control price" placeholder="Price" required>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <input type="hidden" name="id" class="id">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Update</button>
-            </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" name="subscriptionName" class="form-control" placeholder="Subscription Name" required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="amount" class="form-control" placeholder="Price" required>
           </div>
         </div>
-       </div>
-  </form>
- 
-     <!-- Modal Delete Product-->
-      <form id="add-row-form" action="/delete" method="post">
-         <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                   <div class="modal-header">
-                                        <h5 class="modal-title" id="myModalLabel">Delete subscription</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                   </div>
-                   <div class="modal-body">
-                                                 <strong>Are you sure to delete this data? Please be aware that deleting this data does not stop your subscription.</strong>
-                   </div>
-                   <div class="modal-footer">
-                                            <input type="hidden" name="id" class="form-control id2" required>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-success">Delete</button>
-                   </div>
-                    </div>
-            </div>
-         </div>
-     </form>
- 
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal Update Product-->
+<form action="/update" method="post">
+  <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Subscription</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <input type="text" name="subscriptionName" class="form-control subscriptionName"
+              placeholder="Subscription Name" required>
+          </div>
+
+          <div class="form-group">
+            <input type="text" name="amount" class="form-control price" placeholder="Price" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="id" class="id">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal Delete Product-->
+<form id="add-row-form" action="/delete" method="post">
+  <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="myModalLabel">Delete subscription</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+              aria-hidden="true">&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <strong>Are you sure to delete this data? Please be aware that deleting this data does not stop your
+            subscription.</strong>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="id" class="form-control id2" required>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-success">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
 
 <script>
-    $(document).ready(function(){
-            //showing data to edit modal
-	 $('#mytable').on('click','.edit',function(){
-				var user=$(this).data('user')			
-        var id = $(this).data('id');
-        var subscriptionName = $(this).data('subscriptionName');
-        var amount = $(this).data('amount');
-        $('#EditModal').modal('show');
-        $('.subscriptionName').val(subscriptionName);
-        $('.price').val(amount);
-        $('.id').val(id);
-      });
-            //showing delete record modal
-            $('#mytable').on('click','.delete',function(){
-        var id = $(this).data('id');
-        $('#DeleteModal').modal('show');
-        $('.id2').val(id);
-      });
- 
+  $(document).ready(function () {
+    //showing data to edit modal
+    $('#mytable').on('click', '.edit', function () {
+      var user = $(this).data('user')
+      var id = $(this).data('id');
+      var subscriptionName = $(this).data('subscriptionName');
+      var amount = $(this).data('amount');
+      $('#EditModal').modal('show');
+      $('.subscriptionName').val(subscriptionName);
+      $('.price').val(amount);
+      $('.id').val(id);
     });
+    //showing delete record modal
+    $('#mytable').on('click', '.delete', function () {
+      var id = $(this).data('id');
+      $('#DeleteModal').modal('show');
+      $('.id2').val(id);
+    });
+
+  });
 </script>
