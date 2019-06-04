@@ -1,5 +1,5 @@
 var db = require("../models");
-
+const conn= mysql.createConnection()
 module.exports = function(app) {
   // Get all examples
   app.get("/api/subs", function(req, res) {
@@ -24,66 +24,43 @@ module.exports = function(app) {
 
   var db = require("../models");
 
-  //all subs for user
-  app.get("/", function(req, res) {
-    db.subscription
-      .findAll({})
-      .then(function(result) {
-        var hbsObject = {
-          subscription: result
-        };
-        res.render("index", hbsObject);
-      })
-      .catch(function(err) {
-        res.status(500).send(err);
-      });
-  });
-
-  //route for Subscription Page
-  app.get("/subs", function(req, res) {
-    db.subscription.findAll({}).then(function(err, results) {
-      if (err) {
-        throw err;
-      }
-      res.render("subs", {
-        results: results
-      });
+  // /route for homepage
+app.get('/',(req, res) => {
+  let sql = "SELECT * FROM subscription";
+  let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+    res.render('subs',{
+      results: results
     });
   });
+});
 
-  // route for insert data
-  app.post("/save", function(req, res) {
-    db.subscription
-      .create({
-        subscriptionName: req.body.subscriptionName,
-        category: req.body.categoryType,
-        amount: req.body.amount,
-        dueDate: req.body.dueDate
-      })
-      .then(function(test) {
-        if (test) {
-          res.status(200);
-          res.send("Successfully Stored")
-        } else {
-          res.render.alert("Sorry something went wrong");
-        };
-      });
+//route for insert data
+app.post('/save',(req, res) => {
+  let data = {sub_name: req.body.sub_name, sub_price: req.body.sub_price};
+  let sql = "INSERT INTO subscription SET ?";
+  let query = db.query(sql, data,(err, results) => {
+    if(err) throw err;
+    res.redirect('/');
   });
-  //route for update data
-  // app.post('/update',(req, res) => {
-  //   let sql = "UPDATE subscription SET subscriptionName='"+req.body.subscriptionName+"', amount='"+req.body.amount+"' WHERE id="+req.body.id;
-  //   let query = conn.query(sql, (err, results) => {
-  //     if(err) throw err;
-  //     res.redirect('/');
-  //   });
-  // });
+});
 
-  //route for delete data
-  // app.post('/delete',(req, res) => {
-  //   let sql = "DELETE FROM subscription WHERE id="+req.body.id+"";
-  //   let query = conn.query(sql, (err, results) => {
-  //     if(err) throw err;
-  //       res.redirect('/');
-  //   });
-  // });
+//route for update data
+app.post('/update',(req, res) => {
+  let sql = "UPDATE subscription SET sub_name='"+req.body.sub_name+"', sub_price='"+req.body.sub_price+"' WHERE sub_id="+req.body.id;
+  let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+    res.redirect('/');
+  });
+});
+
+//route for delete data
+app.post('/delete',(req, res) => {
+  let sql = "DELETE FROM subscription WHERE sub_id="+req.body.sub_id+"";
+  let query = db.query(sql, (err, results) => {
+    if(err) throw err;
+      res.redirect('/');
+  });
+});
+
 };
