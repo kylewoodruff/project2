@@ -1,9 +1,8 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
-const passportSetup =require('./config/passport-setup');
-
-
+// eslint-disable-next-line no-unused-vars
+const passportSetup = require("./config/passport-setup");
 
 var db = require("./models");
 

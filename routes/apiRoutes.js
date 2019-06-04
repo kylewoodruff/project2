@@ -59,7 +59,8 @@ module.exports = function(app) {
         category: req.body.categoryType,
         amount: req.body.amount,
         dueDate: req.body.dueDate
-      }).then(function(test) {
+      })
+      .then(function(test) {
         if (test) {
           res.status(200);
           res.send("Successfully Stored")
