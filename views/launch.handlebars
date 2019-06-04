@@ -13,15 +13,6 @@
                 <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#loginmodal"
                     id="loginlink">Login</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#signupmodal"
-                    id="signuplink">Sign-up</a>
-
-            </li>
-            <li> <!--This Link will direct to the login.handlebars This will give the User a path to login into google Oauth -->
-
-                <a href ="/login">Login</a>
-            </li>
         </ul>
     </div>
 
@@ -145,8 +136,8 @@
                 <!-- form for login -->
                 <div class="row">
                     <div class="col-4">
-                        <button type="button" class="btn btn-danger"><span class="iconify"
-                                data-icon="ant-design:google-outline" data-inline="false"></span></button>
+                        <a href="/google"><button class="btn btn-danger"><span class="iconify"
+                                    data-icon="ant-design:google-outline" data-inline="false"></span></button></a>
                     </div>
                 </div>
                 <hr>
@@ -169,50 +160,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="loginButton">Save
-                    changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Sign up Modal -->
-<div class="modal" tabindex="-1" role="dialog" id="signupmodal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Login</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- form for login -->
-                <div class="row">
-                    <div class="col-4">
-                        <button type="button" class="btn btn-danger"><span class="iconify"
-                                data-icon="ant-design:google-outline" data-inline="false"></span></button>
-                    </div>
-                </div>
-                <hr>
-
-                <form>
-                    <div class="form-group">
-
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="signupEmail" aria-describedby="emailHelp"
-                            placeholder="Enter email">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="signupPassword" placeholder="Password">
-                    </div>
-                </form>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="signupButton">Save
                     changes</button>
             </div>
         </div>

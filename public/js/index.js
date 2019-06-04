@@ -1,54 +1,34 @@
 /* eslint-disable no-unused-vars */
 $(document).ready(function() {
-  // global moment
-
-  // blogContainer holds all of our posts
-  $("#saveButton").on("click", function() {
-    var name = $("#nameInput")
-      .val()
-      .trim();
-    var date = $("#dateInput").val();
-    var subScript = $("#subInput")
-      .val()
-      .trim();
-    console.log(name + date + subScript);
+  $("#saveBtn").on("click", function() {
+    var name = $("#subscriptionName").val();
+    var category = $(".category").val();
+    var date = $("#date").val();
+    var amount = $("#price").val();
+    
   });
-  var subs;
+  
 
-  function createNewRow(subs) {
-    var newPostCard = $("<div>");
-    newPostCard.addClass("card");
-    var newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    var deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    var editBtn = $("<button>");
-    editBtn.text("EDIT");
-    editBtn.addClass("edit btn btn-info");
-    var newPostTitle = $("<h2>");
-    var newPostDate = $("<small>");
-    var newPostSubs = $("<h5>");
-    newPostSubs.text(subs.Author.name);
-    newPostSubs.css({
-      float: "right",
-      color: "blue",
-      "margin-top": "-10px"
-    });
-    var newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    var newPostBody = $("<p>");
-    newPostTitle.text(post.title + " ");
-    newPostBody.text(post.body);
-    newPostTitle.append(newPostDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(editBtn);
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostSubs);
-    newPostCardBody.append(newPostBody);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("subs", subs);
-    return newPostCard;
-  }
+  //$("#mytable").on("click", handleSubFormSubmit);
+  //showing data to edit modal
+  $("#mytable").on("click", ".edit", function () {
+    var user = $(this).data("user");
+    var id = $(this).data("id");
+    var subscriptionName = $(this).data("subscriptionName");
+    var amount = $(this).data("amount");
+    $("#EditModal").modal("show");
+    $(".subscriptionName").val("subscriptionName");
+    $(".category")
+      .find(":selected")
+      .text()
+      .val("category");
+    $("#price").val(amount);
+    $(".id").val(id);
+  });
+  //showing delete record modal
+  $("#mytable").on("click", ".delete", function () {
+    var id = $(this).data("id");
+    $("#DeleteModal").modal("show");
+    $(".id2").val(id);
+  });
 });
