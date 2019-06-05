@@ -4,7 +4,7 @@ const passport = require("passport");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
+  app.get("/launch", function(req, res) {
     res.render("launch");
   });
   //Auth Login
@@ -30,7 +30,6 @@ module.exports = function(app) {
   app.get("/sub", function(req, res) {
     res.render("subs");
   });
-
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
   //   res.render("404");
