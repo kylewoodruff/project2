@@ -1,4 +1,4 @@
-// eslint-disable-next-line no-unused-vars
+/* eslint-disable no-unused-vars */
 var db = require("../models");
 
 module.exports = function(app) {
@@ -6,87 +6,60 @@ module.exports = function(app) {
   app.get("/api/subs", function(req, res) {
     db.subs.findAll({}).then(function(dbsubs) {
       res.json(dbsubs);
-      ("");
-    });
-  });
-
-  // Create a new example
-  app.post("/api/subs", function(req, res) {
-    db.subs.create(req.body).then(function(dbsubs) {
-      res.json(dbsubs);
     });
   });
 
   // Delete an example by id
   app.delete("/api/subs/:id", function(req, res) {
-    db.subs.destroy({ where: { id: req.params.id } }).then(function(dbsubs) {
-      res.json(dbsubs);
+    db.subs.destroy({ where: { id: req.params.id } }).then(function(res) {
+      res.json(res);   
     });
   });
 
-  var db = require("../models");
-
-  //all subs for user
-  app.get("/", function(req, res) {
-    db.subscription
-      .findAll({})
-      .then(function(result) {
-        var hbsObject = {
-          subscription: result
-        };
-        res.render("launch", hbsObject);
-      })
-      .catch(function(err) {
-        res.status(500).send(err);
-      });
-  });
-
-  //route for Subscription Page
-  app.get("/subs", function(req, res) {
-    db.subscription.findAll({}).then(function(err, results) {
-      if (err) {
-        throw err;
-      }
-      res.render("subs", {
-        results: results
-      });
-    });
-  });
-
-  // route for insert data
-  app.post("/save", function(req, res) {
+  // Creat Subscription
+  app.post("/api/subs", function(req, res) {
     db.subscription
       .create({
         subscriptionName: req.body.subscriptionName,
         category: req.body.categoryType,
         amount: req.body.amount,
-        dueDate: req.body.dueDate
+        dueDate: req.body.dueDate,
+        user: req.body.userId
       })
-      .then(function(test) {
-        if (test) {
+      .then(function(res) {
+        if (res) {
           res.status(200);
           res.send("Successfully Stored");
         } else {
-          res.render.alert("Sorry something went wrong");
+          res.status(409);
+          res.send("Sorry something went wrong");
         }
       });
   });
 
-  //route for update data
-  // app.post('/update',(req, res) => {
-  //   let sql = "UPDATE subscription SET subscriptionName='"+req.body.subscriptionName+"', amount='"+req.body.amount+"' WHERE id="+req.body.id;
-  //   let query = conn.query(sql, (err, results) => {
-  //     if(err) throw err;
-  //     res.redirect('/');
-  //   });
-  // });
-
-  //route for delete data
-  // app.post('/delete',(req, res) => {
-  //   let sql = "DELETE FROM subscription WHERE id="+req.body.id+"";
-  //   let query = conn.query(sql, (err, results) => {
-  //     if(err) throw err;
-  //       res.redirect('/');
-  //   });
-  // });
+  // update subscription
+  app.put("/api/subs/:id", (req, res) => {
+    db.subscription
+      .update(
+        {
+          subscriptionName: req.body.subscriptionName,
+          category: req.body.categoryType,
+          amount: req.body.amount,
+          dueDate: req.body.dueDate
+        },
+        {
+          where: req.params.id
+        }
+      )
+      .then(function(res) {
+        if (res) {
+          res.status(200);
+          res.send("Successfully Stored");
+        } else {
+          res.status(409);
+          res.send("Sorry something went wrong");
+        }
+      });
+    res.redirect("/subs");
+  });
 };

@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 var path = require("path");
 const passport = require("passport");
+var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/launch", function(req, res) {
+  app.get("/", function(req, res) {
     res.render("launch");
   });
   //Auth Login
@@ -28,7 +29,22 @@ module.exports = function(app) {
 
   // Load example page and pass in an example by id
   app.get("/sub", function(req, res) {
-    res.render("subs");
+    db.subscription
+      .findAll({
+        where: {
+          //todo: validate data coming from passport
+          userId: req.user.userId
+        }
+      })
+      .then(function(result) {
+        var hbsObject = {
+          subscription: result
+        };
+        res.render("subs", hbsObject);
+      })
+      .catch(function(err) {
+        res.status(500).send(err);
+      });
   });
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
