@@ -34,7 +34,7 @@ module.exports = function(app) {
         var hbsObject = {
           subscription: result
         };
-        res.render("index", hbsObject);
+        res.render("launch", hbsObject);
       })
       .catch(function(err) {
         res.status(500).send(err);
