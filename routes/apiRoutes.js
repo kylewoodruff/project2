@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 var db = require("../models");
 
 module.exports = function(app) {
@@ -5,6 +6,7 @@ module.exports = function(app) {
   app.get("/api/subs", function(req, res) {
     db.subs.findAll({}).then(function(dbsubs) {
       res.json(dbsubs);
+      ("");
     });
   });
 
@@ -17,7 +19,7 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/subs/:id", function(req, res) {
-    db.subs.destroy({ where: { id: req.params.id } }).then(function (dbsubs) {
+    db.subs.destroy({ where: { id: req.params.id } }).then(function(dbsubs) {
       res.json(dbsubs);
     });
   });
@@ -63,12 +65,13 @@ module.exports = function(app) {
       .then(function(test) {
         if (test) {
           res.status(200);
-          res.send("Successfully Stored")
+          res.send("Successfully Stored");
         } else {
           res.render.alert("Sorry something went wrong");
-        };
+        }
       });
   });
+
   //route for update data
   // app.post('/update',(req, res) => {
   //   let sql = "UPDATE subscription SET subscriptionName='"+req.body.subscriptionName+"', amount='"+req.body.amount+"' WHERE id="+req.body.id;
