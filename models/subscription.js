@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var subscription = sequelize.define("subscription", {
     subscriptionName: {
       type: DataTypes.TEXT,
@@ -15,20 +15,20 @@ module.exports = function (sequelize, DataTypes) {
     userId: {
       type: DataTypes.STRING,
       allowNull: false
-    },
+    }
   });
-  subscription.associate = function (models) {
+  subscription.associate = function(models) {
     console.log(models);
     subscription.hasOne(models.category, {
       foreignKey: {
         allowNull: false
       }
     });
+    subscription.belongsTo(models.users, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
   };
-  return subscription; 
+  return subscription;
 };
-
-
-
-
-
