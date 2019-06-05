@@ -26,6 +26,13 @@ module.exports = function(app) {
     })
   );
 
+  app.get("/google/callback", passport.authenticate("google"), function(
+    req,
+    res
+  ) {
+    res.redirect("/sub");
+  });
+
   // Load example page and pass in an example by id
   app.get("/sub", function(req, res) {
     res.render("subs");

@@ -1,8 +1,10 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+var passport = require("passport");
 // eslint-disable-next-line no-unused-vars
-const passportSetup = require("./config/passport-setup");
+//ending passport
+require("./config/passport-setup");
 
 var db = require("./models");
 
@@ -26,6 +28,9 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 var syncOptions = { force: false };
 
