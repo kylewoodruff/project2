@@ -4,7 +4,7 @@ const keys = require("./keys");
 const db = require("../models");
 
 passport.serializeUser(function(user, done) {
-  done(null, user.googleId);
+  done(null, user.id);
 });
 
 passport.deserializeUser(function(id, done) {

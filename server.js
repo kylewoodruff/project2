@@ -32,7 +32,7 @@ require("./routes/htmlRoutes")(app);
 app.use(passport.initialize());
 app.use(passport.session());
 
-var syncOptions = { force: false };
+var syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
