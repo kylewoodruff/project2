@@ -12,7 +12,7 @@ module.exports = function(app) {
   // Delete an example by id
   app.delete("/api/subs/:id", function(req, res) {
     db.subs.destroy({ where: { id: req.params.id } }).then(function(res) {
-      res.json(res);
+      res.json(res);   
     });
   });
 
