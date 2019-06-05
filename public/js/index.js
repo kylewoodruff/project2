@@ -5,13 +5,11 @@ $(document).ready(function() {
     var category = $(".category").val();
     var date = $("#date").val();
     var amount = $("#price").val();
-    
   });
-  
 
   //$("#mytable").on("click", handleSubFormSubmit);
   //showing data to edit modal
-  $("#mytable").on("click", ".edit", function () {
+  $("#mytable").on("click", ".edit", function() {
     var user = $(this).data("user");
     var id = $(this).data("id");
     var subscriptionName = $(this).data("subscriptionName");
@@ -26,7 +24,7 @@ $(document).ready(function() {
     $(".id").val(id);
   });
   //showing delete record modal
-  $("#mytable").on("click", ".delete", function () {
+  $("#mytable").on("click", ".delete", function() {
     var id = $(this).data("id");
     $("#DeleteModal").modal("show");
     $(".id2").val(id);

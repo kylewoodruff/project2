@@ -3,14 +3,18 @@ const GoogleStrategy = require("passport-google-oauth20");
 const keys = require("./keys");
 
 passport.use(
-    new GoogleStrategy({
-        //options for google strat
-        callbackURL: "/sub",
-        clientID: keys.google.clientID,
-        clientSecret: keys.google.clientSecret
-    }, (accessToken, refreshToken, profile, done) => {
-        //passport callback function
-        console.log("Passport fired");
-        console.log(profile);
-    })
-)
+  new GoogleStrategy(
+    {
+      //options for google strat
+      callbackURL: "/sub",
+      clientID: keys.google.clientID,
+      clientSecret: keys.google.clientSecret
+    },
+    // eslint-disable-next-line no-unused-vars
+    (accessToken, refreshToken, profile, done) => {
+      //passport callback function
+      console.log("Passport fired");
+      console.log(profile);
+    }
+  )
+);

@@ -7,8 +7,8 @@ exports.JAWSBD = {
 };
 
 module.exports = {
-  google:{
-      clientID: process.env.CLIENTID,
-      clientSecret: process.env.CLIENTSECRET
+  google: {
+    clientID: process.env.CLIENTID,
+    clientSecret: process.env.CLIENTSECRET
   }
-}
+};
