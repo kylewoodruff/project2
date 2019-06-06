@@ -9,11 +9,11 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     dueDate: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.INTEGER,
       allowNull: false
     },
     userId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false
     }
   });
