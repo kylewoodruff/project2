@@ -38,11 +38,27 @@ p {
   background: teal;
   height: 500px
 }
-.form-control {
+#searchbar {
   width:70em !important;
 
 }
-@media only screen and (max-width: 1375px) {.form-control {
-width: 25em !important;
+@media only screen and (max-width:854px){
+  #searchbar{
+    width: 16em !important;
+  }
 }
+@media only screen and (min-width:855px){
+  #searchbar{
+    width: 36em !important;
+  }
+}
+@media only screen and (min-width:1048px){
+  #searchbar{
+    width: 49em !important;
+  }
+}
+@media only screen and (min-width: 1367px){
+  #searchbar{
+    width: 69em !important;
+  }
 }
