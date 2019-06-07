@@ -2,18 +2,29 @@ require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 // eslint-disable-next-line no-unused-vars
-const passportSetup = require("./config/passport-setup");
-
+var passport = require("passport");
+require("./config/passport-setup");
+const cookieSession = require("cookie-session");
+const keys = require("./config/keys");
 var db = require("./models");
-
 var app = express();
 var PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [keys.session.cookieKey]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 // Handlebars
 app.engine(
   "handlebars",
@@ -26,6 +37,9 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
+
+
 
 var syncOptions = { force: false };
 

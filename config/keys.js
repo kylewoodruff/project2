@@ -10,5 +10,8 @@ module.exports = {
   google: {
     clientID: process.env.CLIENTID,
     clientSecret: process.env.CLIENTSECRET
+  },
+  session: {
+    cookieKey: process.env.COOKIEKEY
   }
 };
