@@ -9,17 +9,15 @@ $(document).ready(function() {
       amount: $("#price").val()
     };
 
-    $.post("/api/subs", subs, function(res) {
+    $.post("api/subs", subs, function(res) {
       console.log(res);
     });
     document.location.reload(true);
   });
+  var results;
+  $.get("api/subs", function(data) {
+    results = data;
+    console.log(results);
 
-  getSubs();
-
-  function getSubs() {
-    $.get("/api/subs", function(data) {
-      console.log(data);
-    });
-  }
+  });
 });
