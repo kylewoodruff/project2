@@ -10,6 +10,9 @@
   height: 600px;
 
 }
+#googleBtn{
+  width: 150px;
+}
 
 hr {
   height:25px;

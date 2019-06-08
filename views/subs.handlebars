@@ -13,10 +13,10 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a href='/logout' , class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#signoutmodal"
+        <a href="/logout" class="nav-link js-scroll-trigger" 
           id="loginlink">Sign-out</a>
       </li>
-      <li><a href="/logout">Logout</a></li>
+      
     </ul>
   </div>
 
@@ -105,8 +105,8 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="number">Date:</label>
-            <input type="number" id="date" required />
+            <label for="number">Day:</label>
+            <input type="number" min="0" max="31" id="date" required />
           </div>
           <div class="form-group">
             <label for="price">Price:</label>
@@ -127,61 +127,3 @@
   </div>
 
 
-
-
-  <!-- Modal Update subscription-->
-  <form action="/update" method="post">
-    <div class="modal fade" id="EditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Edit Subscription</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <input type="text" name="subscriptionName" class="form-control subscriptionName"
-                placeholder="Subscription Name" required>
-            </div>
-
-            <div class="form-group">
-              <input type="text" name="amount" class="form-control price" placeholder="Price" required>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <input type="hidden" name="id" class="id">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Update</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
-
-  <!-- Modal Delete subscription-->
-  <form id="add-row-form" action="/delete" method="post">
-    <div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="myModalLabel">Delete subscription</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                aria-hidden="true">&times;</span></button>
-          </div>
-          <div class="modal-body">
-            <strong>Are you sure to delete this data? Please be aware that deleting this data does not stop your
-              subscription.</strong>
-          </div>
-          <div class="modal-footer">
-            <input type="hidden" name="id" class="form-control id2" required>
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </form>
