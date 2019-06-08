@@ -4,9 +4,13 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/subs", function(req, res) {
-    db.subscription.findAll({}).then(function(dbsubscription) {
-      res.json(dbsubscription);
-    });
+    db.subscription
+      .findAll({
+        where: { userId: req.user.id }
+      })
+      .then(function(dbsubscription) {
+        res.json(dbsubscription);
+      });
   });
 
   // Delete an example by id
