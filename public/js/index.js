@@ -14,10 +14,4 @@ $(document).ready(function() {
       console.log(response);
     });
   });
-  function getSubs(){
-    $.get("/api/subs", function(data){
-      sub = data;
-      console.log(sub);
-    })
-  }
 });
