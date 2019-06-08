@@ -12,7 +12,7 @@ $(document).ready(function() {
     $.post("api/subs", subs, function(res) {
       console.log(res);
     });
-    document.location.reload(true);
+    location.reload(true);
   });
   var results;
   $.get("api/subs", function(data) {
