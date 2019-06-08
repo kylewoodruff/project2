@@ -18,6 +18,5 @@ $(document).ready(function() {
   $.get("api/subs", function(data) {
     results = data;
     console.log(results);
-
   });
 });

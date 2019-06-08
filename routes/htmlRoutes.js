@@ -43,27 +43,26 @@ module.exports = function(app) {
       next();
     }
   };
-  app.get("/", authCheck, (req, res) => {
-    res.render("subs", {
-      user: req.user
-    });
-  });
+  // app.get("/", authCheck, (req, res) => {
+  //   res.render("subs", {
+  //     user: req.user
+  //   });
+  // });
 
   // Load example page and pass in an example by id
   app.get("/sub", function(req, res) {
-    //db.subscription
-    //.findAll({
-    //where: {
-    //todo: validate data coming from passport
-    //userId: req.user.userId
-    //}
-    // })
-    //.then(function(result) {
-    // var hbsObject = {
-    //subscription: result
-    // };
-    //res.render("subs", hbsObject);
-    res.render("subs");
+    db.subscription
+      .findAll({
+        where: { userId: req.user.id }
+      })
+      .then(function(dbsubscription) {
+        var hbsObject = {
+          results: dbsubscription
+        };
+        console.log(hbsObject);
+        res.render("subs", hbsObject);
+      });
+
     //})
     //.catch(function(err) {
     // res.status(500).send(err);
