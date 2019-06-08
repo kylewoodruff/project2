@@ -2,6 +2,7 @@ const CronJob = require("../node_modules/cron").CronJob;
 const fs = require("fs");
 // eslint-disable-next-line no-unused-vars
 const sendEmail = require("../emails/sendgrid");
+const FindSubs = require("../emails/subquery");
 
 let emailJob = function() {
   console.log("Before job instantiation");
@@ -18,6 +19,7 @@ let emailJob = function() {
         }
         console.log("Log was updated!");
       });
+      let subsArray = 
       d;
     },
     null,
