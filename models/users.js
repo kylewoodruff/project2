@@ -28,6 +28,7 @@ module.exports = function(sequelize, DataTypes) {
   users.associate = function(models) {
     users.hasMany(models.subscription, {
       foreignKey: {
+        
         allowNull: false
       }
     });

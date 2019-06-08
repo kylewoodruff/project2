@@ -18,22 +18,24 @@ module.exports = function(app) {
 
   // Creat Subscription
   app.post("/api/subs", function(req, res) {
+    console.log(req.body);
+    console.log(req.user.id);
     db.subscription
       .create({
         subscriptionName: req.body.subscriptionName,
         category: req.body.categoryType,
         amount: req.body.amount,
         dueDate: req.body.dueDate,
-        user: req.body.userId
+        userId: req.user.id
       })
       .then(function(res) {
-        if (res) {
-          res.status(200);
-          res.send("Successfully Stored");
-        } else {
-          res.status(409);
-          res.send("Sorry something went wrong");
-        }
+        // if (res) {
+        //   res.status(200);
+        //   res.send("Successfully Stored");
+        // } else {
+        //   res.status(409);
+        //   res.send("Sorry something went wrong");
+        // }
       });
   });
 

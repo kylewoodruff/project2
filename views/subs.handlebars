@@ -2,7 +2,7 @@
 
   <a class="navbar-brand js-scroll-trigger"><img src="./images/subMan logoxxxs.png"></a>
   <form class="form-inline">
-    <input class="form-control"  id="searchbar" type="search" placeholder="Search" aria-label="Search">
+    <input class="form-control" id="searchbar" type="search" placeholder="Search" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -13,10 +13,10 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav ml-auto my-2 my-lg-0">
       <li class="nav-item">
-        <a href = '/logout', class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#signoutmodal"
+        <a href='/logout' , class="nav-link js-scroll-trigger" data-toggle="modal" data-target="#signoutmodal"
           id="loginlink">Sign-out</a>
       </li>
-      <li><a href = "/logout">Logout</a></li>
+      <li><a href="/logout">Logout</a></li>
     </ul>
   </div>
 
@@ -32,7 +32,7 @@
       {{#each results}}
 
       {{/each}}
-      
+
     </div>
 
   </div>
@@ -57,7 +57,7 @@
       <td>{{ amount }}</td>
       <td>{{ dueDate }}</td>
       <td>
-      
+<div class="col-6" id="server-results"></div>
       </td>
     </tr>
     {{/each}}
@@ -77,41 +77,45 @@
 
       </div>
       <div class="modal-body">
-        <form action="/save" method="post"></form>
-        <div class="form-group">
+        <form action="/api/subs" method="post" id="my_form">
+          <div class="form-group">
 
-          <label for="name">Name:</label>
-          <input type="text" name="subscriptionName" class="form-control" id="subscriptionName" placeholder="Subscription Name" required>
-        </div>
-        <div class="form-group">
-          <label for="category">Category:</label>
-          <select type="text" name="category" placeholder="Category" class="category">
-            <option>Select Category </option>
-            <option value="1">Video Streaming</option>
-            <option value="2">Food Delivery</option>
-            <option value="3">Clothing Delivery</option>
-            <option value="4">Music Streaming</option>
-            <option value="5">Products</option>
-            <option value="6">Audio Books</option>
-            <option value="7">Hygine</option>
-            <option value="8">Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="date">Date:</label>
-          <input type="date" id="date" required />
-        </div>
-        <div class="form-group">
-          <label for="price">Price:</label>
-          <input type="text" date-type="currency" name="amount" class="form-control" id="price" placeholder="Price" required>
-        </div>
+            <label for="name">Name:</label>
+            <input type="text" name="subscriptionName" class="form-control" id="subscriptionName"
+              placeholder="Subscription Name" required>
+          </div>
+          <div class="form-group">
+            <label for="category">Category:</label>
+            <select type="text" name="category" placeholder="Category" class="category">
+              <option>Select Category </option>
+              <option value="1">Video Streaming</option>
+              <option value="2">Food Delivery</option>
+              <option value="3">Clothing Delivery</option>
+              <option value="4">Music Streaming</option>
+              <option value="5">Products</option>
+              <option value="6">Audio Books</option>
+              <option value="7">Hygine</option>
+              <option value="8">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="number">Date:</label>
+            <input type="number" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="price">Price:</label>
+            <input type="text" date-type="currency" name="amount" class="form-control" id="price" placeholder="Price"
+              required>
+          </div>
         </form>
       </div>
+
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
       </div>
+
     </div>
 
   </div>

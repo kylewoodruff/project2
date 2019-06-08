@@ -1,32 +1,23 @@
 /* eslint-disable no-unused-vars */
+//var passport = require("../../config/passport-setup")
 $(document).ready(function() {
   $("#saveBtn").on("click", function() {
-    var name = $("#subscriptionName").val();
-    var category = $(".category").val();
-    var date = $("#date").val();
-    var amount = $("#price").val();
-  });
+    let subs = {
+      subscriptionName: $("#subscriptionName").val(),
+      categoryType: $(".category").val(),
+      dueDate: $("#date").val(),
+      amount: $("#price").val()
+    };
+    console.log(subs);
 
-  //$("#mytable").on("click", handleSubFormSubmit);
-  //showing data to edit modal
-  $("#mytable").on("click", ".edit", function() {
-    var user = $(this).data("user");
-    var id = $(this).data("id");
-    var subscriptionName = $(this).data("subscriptionName");
-    var amount = $(this).data("amount");
-    $("#EditModal").modal("show");
-    $(".subscriptionName").val("subscriptionName");
-    $(".category")
-      .find(":selected")
-      .text()
-      .val("category");
-    $("#price").val(amount);
-    $(".id").val(id);
+    $.post("/api/subs", subs, function(response) {
+      console.log(response);
+    });
   });
-  //showing delete record modal
-  $("#mytable").on("click", ".delete", function() {
-    var id = $(this).data("id");
-    $("#DeleteModal").modal("show");
-    $(".id2").val(id);
-  });
+  function getSubs(){
+    $.get("/api/subs", function(data){
+      sub = data;
+      console.log(sub);
+    })
+  }
 });
