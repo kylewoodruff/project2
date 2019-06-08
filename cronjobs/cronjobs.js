@@ -22,7 +22,7 @@ let emailJob = function() {
       });
       let subsArray = FindSubs();
       console.log(subsArray);
-      
+
       subsArray.forEach(i => {
         sendEmail(i.email, i.name, function(res) {
           console.log(res);
