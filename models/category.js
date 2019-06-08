@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   category.associate = function(models) {
     console.log(models);
-    category.belongsTo(models.subscription);
+    category.hasOne(models.subscription);
   };
   return category;
 };
