@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 //var passport = require("../../config/passport-setup")
 $(document).ready(function() {
-  $("#saveBtn").on("click", function() {
+  $("#saveBtnn").on("click", function() {
     let subs = {
       subscriptionName: $("#subscriptionName").val(),
       categoryType: $(".category").val(),
