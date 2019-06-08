@@ -16,7 +16,7 @@ module.exports = function(app) {
     });
   });
 
-  // Creat Subscription
+  // Create Subscription
   app.post("/api/subs", function(req, res) {
     console.log(req.body);
     console.log(req.user.id);

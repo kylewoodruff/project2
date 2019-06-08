@@ -48,7 +48,7 @@
       <th>Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody class="sub-container">
     {{#each results}}
     <tr>
       <td>{{ id }}</td>
@@ -57,13 +57,20 @@
       <td>{{ amount }}</td>
       <td>{{ dueDate }}</td>
       <td>
-<div class="col-6" id="server-results"></div>
       </td>
     </tr>
     {{/each}}
   </tbody>
 </table>
 </div>
+
+<div class="row"></div>
+<footer class="page-footer font-small pt-4">
+  <div class="footer-copyright text-center py-3">©2019 Copyright:
+    Death Eaters
+  </div>
+
+</footer>
 
 
 <!-- Modal Add Subscription-->
@@ -79,7 +86,6 @@
       <div class="modal-body">
         <form action="/api/subs" method="post" id="my_form">
           <div class="form-group">
-
             <label for="name">Name:</label>
             <input type="text" name="subscriptionName" class="form-control" id="subscriptionName"
               placeholder="Subscription Name" required>
@@ -113,7 +119,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary" id="saveBtn">Save</button>
+        <button type="submit" class="btn btn-primary" id="saveBtnn">Save</button>
       </div>
 
     </div>
