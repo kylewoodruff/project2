@@ -43,11 +43,11 @@ module.exports = function(app) {
       next();
     }
   };
-  app.get("/", authCheck, (req, res) => {
-    res.render("subs", {
-      user: req.user
-    });
-  });
+  // app.get("/", authCheck, (req, res) => {
+  //   res.render("subs", {
+  //     user: req.user
+  //   });
+  // });
 
   // Load example page and pass in an example by id
   app.get("/sub", function(req, res) {

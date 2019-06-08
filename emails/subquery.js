@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 require("dotenv").config();
 var express = require("express");
 const db = require("../models");
@@ -8,11 +9,13 @@ var config = require(__dirname + "/../config/config.js");
 // const Op = Sequelize.Op;
 const moment = require("moment");
 
-let findSubs = function () {
+let findSubs = function() {
   // let initData = [];
   let initData = [
     {
       id: 1,
+      email: "kylewoodruff@gmail.com",
+      name: "Kyle",
       suscriptionName: "Hulu",
       dueDate: 1,
       amount: 12.99,
@@ -22,6 +25,8 @@ let findSubs = function () {
     },
     {
       id: 2,
+      email: "kylewoodruff@gmail.com",
+      name: "Kyle",
       suscriptionName: "Netflix",
       dueDate: 13,
       amount: 12.99,
@@ -31,6 +36,8 @@ let findSubs = function () {
     },
     {
       id: 3,
+      email: "jayxmiller@gmail.com",
+      name: "Jay",
       suscriptionName: "Hulu",
       dueDate: 12,
       amount: 12.99,
@@ -40,6 +47,8 @@ let findSubs = function () {
     },
     {
       id: 4,
+      email: "jayxmiller@gmail.com",
+      name: "Jay",
       suscriptionName: "Nextflix",
       dueDate: 9,
       amount: 12.99,
@@ -66,13 +75,15 @@ let findSubs = function () {
     // console.log(v.dueDate);
     let newObj = {};
     newObj.userId = v.userId;
+    newObj.email = v.email;
+    newObj.name = v.name;
     if (v.dueDate <= day) {
       // console.log("Next month", true);
       let momentDate = createDate(v.dueDate);
       // console.log("momentDate:", momentDate);
-      momentDate = moment().add({ months: 1 });;
+      momentDate = moment().add({ months: 1 });
       let futureDate = momentDate;
-      console.log("Future:", futureDate);
+      // console.log("Future:", futureDate);
       newObj.dueDate = futureDate;
       newArray.push(newObj);
     } else {
@@ -82,7 +93,7 @@ let findSubs = function () {
       newArray.push(newObj);
     }
   });
-  // console.log("post convert", newArray);
+  console.log("post convert", newArray);
 
   function createDate(data) {
     let day = moment().date(data);
