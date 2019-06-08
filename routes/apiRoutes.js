@@ -16,7 +16,7 @@ module.exports = function(app) {
     });
   });
 
-  // Creat Subscription
+  // Create Subscription
   app.post("/api/subs", function(req, res) {
     db.subscription
       .create({
@@ -24,7 +24,7 @@ module.exports = function(app) {
         category: req.body.categoryType,
         amount: req.body.amount,
         dueDate: req.body.dueDate,
-        user: req.body.userId
+        user: req.user.googleId
       })
       .then(function(res) {
         if (res) {
