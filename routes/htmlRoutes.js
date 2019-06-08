@@ -16,7 +16,8 @@ module.exports = function(app) {
   //authlogout
   app.get("/logout", (req, res) => {
     //handle with passport
-    res.send("logging out");
+    req.logout();
+    res.redirect("/");
   });
 
   //auth with google
@@ -24,12 +25,28 @@ module.exports = function(app) {
     "/google",
     passport.authenticate("google", { scope: ["email", "profile"] })
   );
-
+  //callback route after authentication
   app.get("/google/callback", passport.authenticate("google"), function(
     req,
     res
   ) {
+    req.user;
     res.redirect("/sub");
+  });
+
+  const authCheck = (req, res, next) => {
+    if (!req.user) {
+      //if user is not logged in
+      res.redirect("/google");
+    } else {
+      //if logged in
+      next();
+    }
+  };
+  app.get("/", authCheck, (req, res) => {
+    res.render("subs", {
+      user: req.user
+    });
   });
 
   // Load example page and pass in an example by id
