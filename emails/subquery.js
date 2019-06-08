@@ -1,45 +1,185 @@
+/* eslint-disable no-unused-vars */
+require("dotenv").config();
+var express = require("express");
 const db = require("../models");
-var Sequelize = require("sequelize");
-const Op = Sequelize.Op;
+var app = express();
+var port = process.env.PORT || 3000;
+var config = require(__dirname + "/../config/config.js");
+// var Sequelize = require("sequelize");
+// const Op = Sequelize.Op;
 const moment = require("moment");
 
 let findSubs = function() {
-  // Use moment to get the current date (now).
-  let now = moment();
-  console.log(now, "Current date");
+  // let initData = [];
+  let initData = [
+    {
+      id: 1,
+      email: "kylewoodruff@gmail.com",
+      name: "Kyle",
+      suscriptionName: "Hulu",
+      dueDate: 1,
+      amount: 12.99,
+      createdAt: "1/1/19",
+      updatedAt: "1/1/19",
+      userId: 1
+    },
+    {
+      id: 2,
+      email: "kylewoodruff@gmail.com",
+      name: "Kyle",
+      suscriptionName: "Netflix",
+      dueDate: 13,
+      amount: 12.99,
+      createdAt: "2/2/19",
+      updatedAt: "2/2/19",
+      userId: 1
+    },
+    {
+      id: 3,
+      email: "jayxmiller@gmail.com",
+      name: "Jay",
+      suscriptionName: "Hulu",
+      dueDate: 12,
+      amount: 12.99,
+      createdAt: "4/4/19",
+      updatedAt: "4/4/19",
+      userId: 2
+    },
+    {
+      id: 4,
+      email: "jayxmiller@gmail.com",
+      name: "Jay",
+      suscriptionName: "Nextflix",
+      dueDate: 9,
+      amount: 12.99,
+      createdAt: "5/5/19",
+      updatedAt: "5/5/19",
+      userId: 2
+    }
+  ];
 
-  // Use moment to get the date 1 week from now.
-  let futureDate = moment()
-    .add({ weeks: 1 })
-    .date();
-  console.log(futureDate, "future date");
+  // db.subscription.findAll({}).then(function (res) {
+  //   initData = res;
+  //   if (res) {
+  //     // res.status(200);
+  //     // console.log("query successful");
+  //   } else {
+  //     // res.status(500);
+  //     console.log("query failed");
+  //   }
+  // });
 
-  // Build loop for and Use moment to get the month/year of with the stored date.
-  let dayOfMonth = now.date();
-  console.log(dayOfMonth);
-  db.subscription
-    .findAll({
-      where: {
-        dueDate: {
-          // check for subs inbetween Now and 1 week out from now.
-          [Op.between]: [dayOfMonth, futureDate]
-        }
-      },
-      include: [users]
-    })
-    .then(function(res) {
-      if (res) {
-        res.status(200);
-        console.log("query successful");
-        let data = res;
-        return data;
-      } else {
-        res.status(500);
-        console.log("query failed");
-      }
-    });
+  let newArray = [];
+  initData.forEach((v, i) => {
+    let day = moment().date();
+    // console.log(v.dueDate);
+    let newObj = {};
+    newObj.userId = v.userId;
+    newObj.email = v.email;
+    newObj.name = v.name;
+    if (v.dueDate <= day) {
+      // console.log("Next month", true);
+      let momentDate = createDate(v.dueDate);
+      // console.log("momentDate:", momentDate);
+      momentDate = moment().add({ months: 1 });
+      let futureDate = momentDate;
+      // console.log("Future:", futureDate);
+      newObj.dueDate = futureDate;
+      newArray.push(newObj);
+    } else {
+      let arrayDate = createDate(v.dueDate);
+      // console.log(arrayDate);
+      newObj.dueDate = arrayDate;
+      newArray.push(newObj);
+    }
+  });
+  // console.log("post convert", newArray);
+
+  function createDate(data) {
+    let day = moment().date(data);
+    let month = moment().month();
+    let string = month.toString() + "-" + day.toString();
+    console.log(string);
+    // let fullDate = moment().format(string);
+    // console.log("Full Date:", fullDate);
+    return string;
+  }
+  return newArray;
 };
 
 findSubs();
+// let initData = [
+//   {
+//     id: 1,
+//     suscriptionName: "Hulu",
+//     dueDate: 1,
+//     amount: 12.99,
+//     createdAt: "1/1/19",
+//     updatedAt: "1/1/19",
+//     userId: 1
+//   },
+//   {
+//     id: 2,
+//     suscriptionName: "Netflix",
+//     dueDate: 22,
+//     amount: 12.99,
+//     createdAt: "2/2/19",
+//     updatedAt: "2/2/19",
+//     userId: 1
+//   },
+//   {
+//     id: 3,
+//     suscriptionName: "Hulu",
+//     dueDate: 6,
+//     amount: 12.99,
+//     createdAt: "4/4/19",
+//     updatedAt: "4/4/19",
+//     userId: 2
+//   },
+//   {
+//     id: 4,
+//     suscriptionName: "Nextflix",
+//     dueDate: 7,
+//     amount: 12.99,
+//     createdAt: "5/5/19",
+//     updatedAt: "5/5/19",
+//     userId: 2
+//   }
+// ];
+// // console.log("initial array", initData);
+// let newArray = [];
+
+// initData.forEach((v, i) => {
+//   let day = moment().date();
+//   // console.log(v.dueDate);
+//   let newObj = {};
+//   newObj.userId = v.userId;
+//   if (v.dueDate <= day) {
+//     // console.log("Next month", true);
+//     let momentDate = createDate(v.dueDate);
+//     // console.log("momentDate:", momentDate);
+//     momentDate = moment().add({ months: 1 });;
+//     let futureDate = momentDate;
+//     console.log("Future:", futureDate);
+//     newObj.dueDate = futureDate;
+//     newArray.push(newObj);
+//   } else {
+//     let arrayDate = createDate(v.dueDate);
+//     // console.log(arrayDate);
+//     newObj.dueDate = arrayDate;
+//     newArray.push(newObj);
+//   }
+// });
+// // console.log("post convert", newArray);
+
+// function createDate(data) {
+//   let day = moment().date(data);
+//   let month = moment().month();
+//   let string = month.toString() + "-" + day.toString();
+//   console.log(string);
+//   // let fullDate = moment().format(string);
+//   // console.log("Full Date:", fullDate);
+//   return string;
+// }
 
 module.exports = findSubs;
