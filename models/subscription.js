@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
   });
   subscription.associate = function(models) {
     console.log(models);
-    subscription.hasOne(models.category, {
+    subscription.belongsTo(models.category, {
       foreignKey: {
         allowNull: false
       }
