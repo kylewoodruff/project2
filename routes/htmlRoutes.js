@@ -11,6 +11,7 @@ module.exports = function(app) {
   //Auth Login
   app.get("/login", (req, res) => {
     res.render("login");
+    authCheck();
   });
 
   //authlogout
