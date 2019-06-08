@@ -62,12 +62,10 @@ module.exports = function(app) {
         };
         console.log(hbsObject);
         res.render("subs", hbsObject);
+      })
+      .catch(function(err) {
+        res.status(500).send(err);
       });
-
-    //})
-    //.catch(function(err) {
-    // res.status(500).send(err);
-    //});
   });
   // Render 404 page for any unmatched routes
   // app.get("*", function(req, res) {
