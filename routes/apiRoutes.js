@@ -4,16 +4,18 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/subs", function(req, res) {
-    db.subs.findAll({}).then(function(dbsubs) {
-      res.json(dbsubs);
+    db.subscription.findAll({}).then(function(dbsubscription) {
+      res.json(dbsubscription);
     });
   });
 
   // Delete an example by id
   app.delete("/api/subs/:id", function(req, res) {
-    db.subs.destroy({ where: { id: req.params.id } }).then(function(res) {
-      res.json(res);
-    });
+    db.subs
+      .destroy({ where: { userId: req.params.userId } })
+      .then(function(res) {
+        res.json(res);
+      });
   });
 
   // Create Subscription

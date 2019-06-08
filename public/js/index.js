@@ -8,10 +8,17 @@ $(document).ready(function() {
       dueDate: $("#date").val(),
       amount: $("#price").val()
     };
-    console.log(subs);
+    //console.log(subs);
 
-    $.post("/api/subs", subs, function(response) {
-      console.log(response);
+    $.post("/api/subs", subs, function(res) {
+      console.log(res);
     });
   });
+  getSubs();
+
+  function getSubs() {
+    $.get("/api/subs", function(req) {
+      console.log(req);
+    });
+  }
 });
