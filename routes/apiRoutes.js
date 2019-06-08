@@ -20,8 +20,8 @@ module.exports = function(app) {
 
   // Create Subscription
   app.post("/api/subs", function(req, res) {
-    console.log(req.body);
-    console.log(req.user.id);
+    //console.log(req.body);
+    //console.log(req.user.id);
     db.subscription
       .create({
         subscriptionName: req.body.subscriptionName,
