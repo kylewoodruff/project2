@@ -93,7 +93,7 @@ let findSubs = function() {
       newArray.push(newObj);
     }
   });
-  console.log("post convert", newArray);
+  // console.log("post convert", newArray);
 
   function createDate(data) {
     let day = moment().date(data);
