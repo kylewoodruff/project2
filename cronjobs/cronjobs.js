@@ -3,32 +3,34 @@ const fs = require("fs");
 // eslint-disable-next-line no-unused-vars
 const sendEmail = require("../emails/sendgrid");
 // eslint-disable-next-line no-unused-vars
-const FindSubs = require("../emails/subquery");
+const findSubs = require("../emails/subquery");
 
-let emailJob = function() {
+let emailJob = async () => {
   console.log("Before job instantiation");
   const job = new CronJob(
     // cron timer set for every day
-    "00 00 * * *",
-    function() {
+    "10 * * * * *",
+    async () => {
       const d = new Date();
-      console.log("Midnight:", d);
-      console.log("My Cron Job");
+      // console.log("Midnight:", d);
+      // console.log("My Cron Job");
       fs.appendFile("timerlog.txt", job.lastDate() + "\n", function(err) {
         if (err) {
           return console.log(err);
         }
         console.log("Log was updated!");
       });
-      let subsArray = FindSubs();
-      console.log(subsArray);
-
-      subsArray.forEach(i => {
-        sendEmail(i.email, i.name, function(res) {
-          console.log(res);
+      // eslint-disable-next-line no-unused-vars
+      let subsArray = await findSubs(function(data) {
+        console.log(data);
+        data.forEach(i => {
+          // eslint-disable-next-line no-unused-vars
+          sendEmail(i.email, i.name, function(res) {
+            console.log(res);
+          });
         });
       });
-
+      console.log(subsArray);
       d;
     },
     null,
@@ -37,6 +39,6 @@ let emailJob = function() {
   );
   console.log("After job instantiation");
 };
-emailJob();
+// emailJob();
 
 module.exports = emailJob;
