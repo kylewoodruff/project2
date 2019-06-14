@@ -15,7 +15,7 @@ let sendEmail = function(toEmail, name, callback) {
   };
 
   sgMail.send(msg).then(function(res) {
-    console.log(res[0].statusMessage);
+    callback(res[0].statusMessage);
   });
 };
 module.exports = sendEmail;

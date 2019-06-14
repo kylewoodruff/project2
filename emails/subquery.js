@@ -9,11 +9,12 @@ var Sequelize = require("sequelize");
 const Op = Sequelize.Op;
 const moment = require("moment");
 
-let findSubs = () => {
+// eslint-disable-next-line prettier/prettier
+let findSubs = async (callback) => {
   let initData = [];
   let newArray = [];
   var emailArray = [];
-  db.subscription
+  initData = await db.subscription
     .findAll({
       include: [{ model: db.users }]
     })
@@ -47,15 +48,13 @@ let findSubs = () => {
             email: v.email
           };
           emailArray.push(emailObj);
-          //return emailArray;
         } else {
           // console.log("duedate to far into the future:", v.dueDate);
         }
       });
       console.log("email array:", emailArray);
-      // return emailArray;
+      callback(emailArray);
     });
-  return emailArray;
 };
 
 // findSubs();

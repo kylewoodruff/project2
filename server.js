@@ -54,6 +54,6 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 // Cron job
-emailJob();
+// emailJob();
 
 module.exports = app;
