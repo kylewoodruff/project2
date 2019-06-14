@@ -9,6 +9,7 @@ const keys = require("./config/keys");
 var db = require("./models");
 var app = express();
 var port = process.env.PORT || 3000;
+// eslint-disable-next-line no-unused-vars
 const emailJob = require("./cronjobs/cronjobs");
 
 // Middleware
