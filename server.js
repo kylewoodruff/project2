@@ -9,6 +9,7 @@ const keys = require("./config/keys");
 var db = require("./models");
 var app = express();
 var port = process.env.PORT || 3000;
+const emailJob = require("./cronjobs/cronjobs");
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -53,5 +54,6 @@ db.sequelize.sync(syncOptions).then(function() {
 });
 
 // Cron job
+emailJob();
 
 module.exports = app;

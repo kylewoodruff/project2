@@ -9,7 +9,7 @@ let emailJob = function() {
   console.log("Before job instantiation");
   const job = new CronJob(
     // cron timer set for every day
-    "00 00 * * *",
+    "30 * * * * *",
     function() {
       const d = new Date();
       console.log("Midnight:", d);
@@ -23,11 +23,11 @@ let emailJob = function() {
       let subsArray = FindSubs();
       console.log(subsArray);
 
-      subsArray.forEach(i => {
-        sendEmail(i.email, i.name, function(res) {
-          console.log(res);
-        });
-      });
+      // subsArray.forEach(i => {
+      //   sendEmail(i.email, i.name, function(res) {
+      //     console.log(res);
+      //   });
+      // });
 
       d;
     },
