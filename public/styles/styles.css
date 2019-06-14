@@ -4,6 +4,13 @@
 .navbar {
   background: transparent;
 }
+.display-4{
+  color:white;
+  font-weight: bolder;
+  margin-top: 230px;
+  font-size: 96px !important;
+  
+}
 #jumbotron1 {
   background-image: url("../images/tv.jpg");
   background-size: cover;
